@@ -9,6 +9,7 @@
         <td>Image</td>
         <td>Title</td>
         <td>Description</td>
+        <td>Creator</td>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
           <td><%= image_tag movie.image.url(:medium, class: "movie_image")%></td>
           <td><%= link_to(movie.title, movie_path(movie)) %></td>
           <td><%= movie.description %></td>
+          <td><%= movie.user.email %></td>
           <td>
               <%= link_to("Edit", edit_movie_path(movie), class: "btn btn-sm btn-default")%>
               <%= link_to("Delete",movie_path(movie),    class: "btn btn-sm btn-danger",
