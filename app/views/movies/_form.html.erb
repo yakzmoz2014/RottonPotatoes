@@ -1,6 +1,7 @@
 <%= simple_form_for @movie do |f| %>
 
   <div class="form-group">
+    <%= f.input :image, as: :file %>
     <%= f.input :title, input_html: { class: "form-control"} %>
     <%= f.input :description, input_html: { class: "form-control"} %>
   </div>
