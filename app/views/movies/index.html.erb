@@ -16,7 +16,7 @@
       <% @movies.each do |movie| %>
         <tr>
           <td>#</td>
-          <td><%= image_tag movie.image.url(:medium, class: "movie_image")%></td>
+          <td><%= image_tag movie.image.url(:thumb, class: "movie_image")%></td>
           <td><%= link_to(movie.title, movie_path(movie)) %></td>
           <td><%= movie.description %></td>
           <td><%= movie.user.email %></td>

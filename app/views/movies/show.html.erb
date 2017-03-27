@@ -6,7 +6,7 @@
       <%= link_to("Edit", edit_movie_path(@movie), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
-  <%= image_tag @movie.image.url(:medium)%>
+  <%= image_tag @movie.image.url(:thumb)%>
   <h2><%= @movie.title %></h2>
   <p><%= @movie.description %></p>
 
@@ -28,4 +28,8 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class="text-center">
+    <%= will_paginate @posts %>
+  </div>
 </div>
