@@ -1,6 +1,8 @@
 class Movie < ApplicationRecord
   belongs_to :user
   has_many :posts
+  has_many :movie_relationships
+  has_many :members, through: :movie_relationships, source: :user 
   validates :title, presence: true
   validates :description, presence: true
 
