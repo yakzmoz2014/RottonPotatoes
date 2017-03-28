@@ -12,4 +12,12 @@ class User < ApplicationRecord
   def is_favorite_of?(movie)
     participated_movies.include?(movie)
   end
+
+  def favorite!(movie)
+    participated_movies << movie
+  end
+
+  def not_favorite!(movie)
+    participated_movies.delete(movie)
+  end
 end
