@@ -1,0 +1,28 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 已加入Favorite列表的影片 </h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> 片名 </th>
+        <th> 简介 </th>
+        <th> 影评数 </th>
+        <th> 最近更新 </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td> # </td>
+          <td> <%= link_to(movie.title, movie_path(movie)) %> </td>
+          <td> <%= movie.description %> </td>
+          <td> <%= movie.posts.count %> </td>
+          <td> <%= movie.updated_at %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
