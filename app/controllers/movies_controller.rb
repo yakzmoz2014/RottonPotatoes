@@ -42,6 +42,31 @@ class MoviesController < ApplicationController
     redirect_to movies_path, alert: "Movie was deleted!"
   end
 
+  def favorite
+    @movie = Movie.find(params[:id])
+
+    if !current_user.is_favorite_of?(@movie)
+      current_user.favorite!(@movie)
+      flash[:notice] = "加入Favorite列表成功！"
+    else
+      flash[:warning] = "已经存在Favorite列表，请勿重复添加！"
+    end
+
+    redirect_to movie_path(@movie)
+  end
+
+  def not_favorite
+    @movie = Movie.find(params[:id])
+
+    if current_user.is_favorite_of?(@movie)
+      current_user.not_favorite!(@movie)
+      flash[:alert] = "已经从Favorite列表移除！"
+    else
+      flash[:warning] = "尚未加入Favorite列表"
+    end
+    redirect_to movie_path(@movie)
+  end
+
   private
 
   def movie_params

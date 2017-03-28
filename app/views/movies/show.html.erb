@@ -4,12 +4,16 @@
     <span class="pull-right">
       <% if current_user && current_user.is_favorite_of?(@movie)%>
         <label class="label label-success">Favorite</label>
+        <%= link_to("从Favorite列表移除", not_favorite_movie_path(@movie), method: :post, class: "btn btn-danger") %>
       <% else %>
         <label class="label label-warning">Not Favorite</label>
+        <%= link_to("加入Favorite列表", favorite_movie_path(@movie), method: :post, class: "btn btn-success") %>
       <% end %>
     </span>
 
-    <%= link_to("Write a Review", new_movie_post_path(@movie), class: "btn btn-default pull-right")%>
+    <% if current_user && current_user.is_favorite_of?(@movie)%>
+      <%= link_to("Write a Review", new_movie_post_path(@movie), class: "btn btn-default pull-right")%>
+    <% end %>
 
     <% if current_user && current_user == @movie.user %>
       <%= link_to("Edit", edit_movie_path(@movie), class: "btn btn-primary pull-right")%>
