@@ -13,22 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @movies.each do |movie| %>
-        <tr>
-          <td>#</td>
-          <td><%= image_tag movie.image.url(:thumb, class: "movie_image")%></td>
-          <td><%= link_to(movie.title, movie_path(movie)) %></td>
-          <td><%= render_movie_description(movie) %></td>
-          <td><%= movie.user.email %></td>
-          <td>
-            <% if current_user && current_user == movie.user %>
-              <%= link_to("编辑", edit_movie_path(movie), class: "btn btn-sm btn-default")%>
-              <%= link_to("删除",movie_path(movie),    class: "btn btn-sm btn-danger",
-                          method: :delete, data: { confirm: "Are you sure?" } )%>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
+      <%= render :partial => "movie_item", :collection => @movies, :as => :movie %>
     </tbody>
   </table>
 </div>
