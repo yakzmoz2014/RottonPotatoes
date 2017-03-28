@@ -6,10 +6,10 @@
     <thead>
       <tr>
         <td>#</td>
-        <td>Image</td>
-        <td>Title</td>
-        <td>Description</td>
-        <td>Creator</td>
+        <td>图片</td>
+        <td>影片</td>
+        <td>简介</td>
+        <td>创建者</td>
       </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
           <td>#</td>
           <td><%= image_tag movie.image.url(:thumb, class: "movie_image")%></td>
           <td><%= link_to(movie.title, movie_path(movie)) %></td>
-          <td><%= simple_format(movie.description) %></td>
+          <td><%= render_movie_description(movie) %></td>
           <td><%= movie.user.email %></td>
           <td>
             <% if current_user && current_user == movie.user %>
