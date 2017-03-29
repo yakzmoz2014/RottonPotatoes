@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @posts = @movie.posts.recent.paginate(:page => params[:page], :per_page => 25)
+    @posts = @movie.posts.recent.paginate(:page => params[:page], :per_page => 10)
   end
 
   def edit
@@ -48,9 +48,9 @@ class MoviesController < ApplicationController
 
     if !current_user.is_favorite_of?(@movie)
       current_user.favorite!(@movie)
-      flash[:notice] = "加入Favorite列表成功！"
+      flash[:notice] = "收藏电影成功！"
     else
-      flash[:warning] = "已经存在Favorite列表，请勿重复添加！"
+      flash[:warning] = "已经收藏，请勿重复添加！"
     end
 
     redirect_to movie_path(@movie)
@@ -61,9 +61,9 @@ class MoviesController < ApplicationController
 
     if current_user.is_favorite_of?(@movie)
       current_user.not_favorite!(@movie)
-      flash[:alert] = "已经从Favorite列表移除！"
+      flash[:alert] = "已取消收藏！"
     else
-      flash[:warning] = "尚未加入Favorite列表"
+      flash[:warning] = "尚未加入收藏列表"
     end
     redirect_to movie_path(@movie)
   end
