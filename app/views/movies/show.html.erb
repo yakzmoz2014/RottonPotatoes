@@ -2,7 +2,6 @@
   <div class="group">
 
     <span class="pull-right">
-      <% if current_user && current_user == @movie.user %>
         <% if current_user && current_user.is_favorite_of?(@movie)%>
           <label class="label label-success">已收藏</label>
           <%= link_to("取消收藏", not_favorite_movie_path(@movie), method: :post, class: "btn btn-danger") %>
@@ -10,7 +9,6 @@
           <label class="label label-warning">未收藏</label>
           <%= link_to("收藏电影", favorite_movie_path(@movie), method: :post, class: "btn btn-success") %>
         <% end %>
-      <% end %>
     </span>
 
     <% if current_user && current_user.is_favorite_of?(@movie)%>
