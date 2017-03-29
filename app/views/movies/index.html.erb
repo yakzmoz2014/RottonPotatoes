@@ -8,7 +8,7 @@
     <% @movies.each do |movie|%>
       <div class="col-xs-6 col-md-3">
         <div class="movie-index-show">
-        <%= link_to movie_path(movie) do %>
+        <%= link_to (movie_path(movie)) do %>
           <% if movie.image.present?%>
             <td><%= image_tag movie.image.url(:medium, class: "thumbnail")%></td>
           <% else %>
@@ -16,7 +16,7 @@
           <% end %>
         <% end %>
       </div>
-        <p class="text-center"><%= link_to(movie.title, movie_path(movie), class: "text-center") %></p>
+        <p class="text-center"><%= link_to(movie.title, movie_path(movie)) %></p>
         <br>
         <% if current_user && current_user == movie.user %>
           <%= link_to("编辑", edit_movie_path(movie), class: "btn btn-sm btn-default")%>

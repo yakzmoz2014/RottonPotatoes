@@ -16,7 +16,7 @@
       <% @posts.each do |post| %>
         <tr>
           <td> <%= post.content %> </td>
-          <td> <%= post.movie.title %> </td>
+          <td> <%= post.movie.try(:title) %> </td>
           <td> <%= post.updated_at %> </td>
         </tr>
       <% end %>
