@@ -1,19 +1,29 @@
-<div class="col-md-12">
-  <div class="group">
-    <%= link_to("New movie", new_movie_path, class: "btn btn-primary pull-right") %>
+
+
+<div class="container">
+    <%= link_to("New movie", new_movie_path(@movie), class: "btn btn-primary pull-right")%>
+    <hr>
+    <br>
+  <div class="row">
+    <% @movies.each do |movie|%>
+      <div class="col-xs-6 col-md-3">
+        <div class="movie-index-show">
+        <%= link_to movie_path(movie) do %>
+          <% if movie.image.present?%>
+            <td><%= image_tag movie.image.url(:medium, class: "thumbnail")%></td>
+          <% else %>
+            <%= image_tag("http://placehold.it/300x300&text= No Pic", class: "thumbnail")%>
+          <% end %>
+        <% end %>
+      </div>
+        <p class="text-center"><%= link_to(movie.title, movie_path(movie), class: "text-center") %></p>
+        <br>
+        <% if current_user && current_user == movie.user %>
+          <%= link_to("编辑", edit_movie_path(movie), class: "btn btn-sm btn-default")%>
+          <%= link_to("删除",movie_path(movie),    class: "btn btn-sm btn-danger",
+                      method: :delete, data: { confirm: "Are you sure?" } )%>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <td>#</td>
-        <td>图片</td>
-        <td>影片</td>
-        <td>简介</td>
-        <td>创建者</td>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render :partial => "movie_item", :collection => @movies, :as => :movie %>
-    </tbody>
-  </table>
 </div>
