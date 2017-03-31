@@ -3,7 +3,12 @@ class PostsController < ApplicationController
 
    def new
      @movie = Movie.find(params[:movie_id])
-     @post = Post.new
+
+     if current_user.is_favorite_of?(@movie)
+       @post = Post.new
+     else
+       redirect_to movie_path(@movie), notice: "收藏电影后才能评论"
+     end
    end
 
    def create

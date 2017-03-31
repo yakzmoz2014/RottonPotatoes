@@ -1,12 +1,12 @@
 
 
-<div class="container">
+<div class="container-fluid">
     <%= link_to("New movie", new_movie_path(@movie), class: "btn btn-primary pull-right")%>
     <hr>
     <br>
   <div class="row">
     <% @movies.each do |movie|%>
-      <div class="col-xs-6 col-md-3">
+      <div class="col-md-3">
         <div class="movie-index-show">
         <%= link_to (movie_path(movie)) do %>
           <% if movie.image.present?%>
