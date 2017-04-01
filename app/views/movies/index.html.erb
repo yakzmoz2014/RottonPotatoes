@@ -12,11 +12,12 @@
           <% if movie.image.present?%>
             <td><%= image_tag movie.image.url(:medium, class: "thumbnail")%></td>
           <% else %>
-            <%= image_tag("http://placehold.it/200x300&text= No Pic", class: "thumbnail")%>
+            <%= image_tag("https://ww3.sinaimg.cn/large/006tNbRwgy1fe780tetrdj306y08cwhh.jpg", class: "thumbnail")%>
           <% end %>
         <% end %>
       </div>
-        <p class="text-center"><%= link_to(movie.title, movie_path(movie)) %></p>
+        <br>
+        <%= link_to(movie.title, movie_path(movie)) %>
         <br>
         <% if current_user && current_user == movie.user %>
           <%= link_to("编辑", edit_movie_path(movie), class: "btn btn-sm btn-default")%>
