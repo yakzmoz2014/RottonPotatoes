@@ -7,7 +7,7 @@ class PostsController < ApplicationController
      if current_user.is_favorite_of?(@movie)
        @post = Post.new
      else
-       redirect_to movie_path(@movie), notice: "收藏电影后才能评论"
+       redirect_to movie_path(@movie), alert: "收藏电影后才能评论"
      end
    end
 
