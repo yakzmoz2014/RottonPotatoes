@@ -12,8 +12,10 @@
       <% if @movie.image.present?%>
         <%= image_tag @movie.image.url(:medium, class: "thumbnail")%>
       <% else %>
-        <%= image_tag("http://placehold.it/200x200&text= No Pic", class: "thumbnail")%>
+        <%= image_tag("http://placehold.it/200x300&text= No Pic", class: "thumbnail")%>
       <% end %>
+      <br>
+      <br>
       <span class="pull-left">
           <% if current_user && current_user.is_favorite_of?(@movie)%>
             <label class="label label-success">已收藏</label>

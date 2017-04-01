@@ -12,7 +12,7 @@
           <% if movie.image.present?%>
             <td><%= image_tag movie.image.url(:medium, class: "thumbnail")%></td>
           <% else %>
-            <%= image_tag("http://placehold.it/300x300&text= No Pic", class: "thumbnail")%>
+            <%= image_tag("http://placehold.it/200x300&text= No Pic", class: "thumbnail")%>
           <% end %>
         <% end %>
       </div>
