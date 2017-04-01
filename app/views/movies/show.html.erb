@@ -11,20 +11,18 @@
     <div class="col-md-4">
       <% if @movie.image.present?%>
         <%= image_tag @movie.image.url(:medium, class: "thumbnail")%>
-        <br>
-        <br>
-        <span class="pull-left">
-            <% if current_user && current_user.is_favorite_of?(@movie)%>
-              <label class="label label-success">已收藏</label>
-              <%= link_to("取消收藏", not_favorite_movie_path(@movie), method: :post, class: "btn btn-danger") %>
-            <% else %>
-              <label class="label label-warning">未收藏</label>
-              <%= link_to("收藏电影", favorite_movie_path(@movie), method: :post, class: "btn btn-success") %>
-            <% end %>
-        </span>
       <% else %>
-        <%= image_tag("http://placehold.it/300x300&text= No Pic", class: "thumbnail")%>
+        <%= image_tag("http://placehold.it/200x200&text= No Pic", class: "thumbnail")%>
       <% end %>
+      <span class="pull-left">
+          <% if current_user && current_user.is_favorite_of?(@movie)%>
+            <label class="label label-success">已收藏</label>
+            <%= link_to("取消收藏", not_favorite_movie_path(@movie), method: :post, class: "btn btn-danger") %>
+          <% else %>
+            <label class="label label-warning">未收藏</label>
+            <%= link_to("收藏电影", favorite_movie_path(@movie), method: :post, class: "btn btn-success") %>
+          <% end %>
+      </span>
     </div>
     <div class="col-md-6">
       <h2><%= @movie.title %></h2>
