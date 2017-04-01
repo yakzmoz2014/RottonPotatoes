@@ -23,8 +23,8 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile       = true
-  config.server_static_assets = true
+  config.assets.compile       = false
+
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -82,6 +82,9 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  # Do not dump schema after migrations.
+  config.active_record.dump_schema_after_migration = false
+
   # AWS s3
   config.paperclip_defaults = {
     storage: :s3,
@@ -92,7 +95,4 @@ Rails.application.configure do
       s3_region: ENV.fetch('AWS_REGION'),
     }
   }
-
-  # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
 end
