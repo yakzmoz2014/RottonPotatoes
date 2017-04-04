@@ -17,7 +17,7 @@
         <% end %>
       </div>
         <br>
-        <%= link_to(movie.title, movie_path(movie)) %>
+        <%= link_to(movie.title, movie_path(movie))%>
         <br>
         <% if current_user && current_user == movie.user %>
           <%= link_to("编辑", edit_movie_path(movie), class: "btn btn-sm btn-default")%>
